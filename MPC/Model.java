@@ -14,7 +14,6 @@ import java.util.ArrayList;
 public class Model {
 
     private final Continue con;
-    private final int bound = 5;
     private final int samplesize = 5;
     private final int iteration = 2000;
     private int budget = 4000;
@@ -36,14 +35,14 @@ public class Model {
 
         con.run();
 
-        Instance opt=con.getOptimal();
+        Instance opt = con.getOptimal();
         System.out.println(opt.getFeature(0));
         System.out.println(opt.getFeature(1));
 
     }
 
     private ArrayList<UserData> processData(String trainDataFile) {
-        BufferedReader reader=null;
+        BufferedReader reader = null;
 
         try {
 
@@ -52,19 +51,19 @@ public class Model {
             String line;
             double value = 0;
             int index = -1;
-            ArrayList<UserData> userDataArrayList=new ArrayList<>();
+            ArrayList<UserData> userDataArrayList = new ArrayList<>();
             while ((line = reader.readLine()) != null) {
                 index++;
-                if(index==0) {
+                if (index == 0) {
                     continue;
                 }
                 String[] columns = line.split(DELIMITER);
-                UserData userData=new UserData(columns[0],columns[1],columns[2],columns[3]);
+                UserData userData = new UserData(columns[0], columns[1], columns[2], columns[3]);
                 userDataArrayList.add(userData);
             }
 
             return userDataArrayList;
-        }catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         } finally {
             if (reader != null) {
@@ -106,8 +105,6 @@ public class Model {
         //    scores=model.update(evalRes);
         //
         //}
-
-
 
     }
 
