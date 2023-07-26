@@ -1,37 +1,10 @@
-/* This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU General Public License
- * as published by the Free Software Foundation; either version 2
- * of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
- *
- * Copyright (C) 2015 Nanjing University, Nanjing, China
- */
- 
- /**
- * Class Instance
- * @author Yi-Qi Hu
- * @time 2015.11.13
- * @version 2.0
- * this class is a storage of each sample
- */
 package Racos.Componet;
 
-import Racos.Componet.*;
-
 public class Instance {
-	
-	private double[] feature;//the value in each dimension
-	private int totalpoint;//the total number of via point
-	private int infeasiblepoint;//the rank number of infeasible point
-	private double value;	 //the objective function value with the feature
+	//the value in each dimension
+	private double[] feature;
+	//the objective function value with the feature
+	private double value;
 
 	public double [][] region;
 	/**
@@ -42,8 +15,6 @@ public class Instance {
 	public Instance(Dimension dim){
 		feature = new double[dim.getSize()];
 		value = 0;
-		totalpoint=0;
-		infeasiblepoint=0;
 		region = new double[dim.getSize()][2];
 		for(int i = 0;i < dim.getSize();++i){
 			region[i][0] = dim.getRegion(i)[0];
@@ -119,23 +90,6 @@ public class Instance {
 	 */
 	public void setValue(double val){
 		value = val;
-	}
-	public int getTotalpoint(){
-		return totalpoint;
-	}
-	public int getInfeasiblepoint(){
-		return infeasiblepoint-1;
-	}
-
-	public void setTotalpoint(){
-		totalpoint=(int)feature[0];
-	}
-	public void setTotalpoint(double num){
-		totalpoint=(int) num;
-	}
-
-	public void setInfeasiblepoint(int num){
-		infeasiblepoint=num;
 	}
 	
 	/**
